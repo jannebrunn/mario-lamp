@@ -1,7 +1,7 @@
 #!/bin/bash
 
 arduinoCliDockerImage="ardiono-cli-install:0.0.2"
-BUILD_DIR="/home/asvens85/mario-lamp/src"
+BUILD_DIR=$1
 
 CURRENTEPOCTIME=`date +"%m%d%Y-%H%M%S"`
 
