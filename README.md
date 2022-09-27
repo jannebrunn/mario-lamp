@@ -9,4 +9,4 @@ docker run --privileged  ${arduinoCliDockerImage} arduino-cli version
 # android-cli
 arduino-cli compile -b arduino:avr:uno some-folder/src/mario-lamp-arduino/ --output-dir work-dir
 
-# Bla bla bla
+#vc Bla bla blavccxn
