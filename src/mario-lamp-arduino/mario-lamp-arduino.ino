@@ -14,6 +14,7 @@ int buttonState_B = LOW;
 int buttonState_Up = LOW;
 int buttonState_Down = LOW;
 
+char debug_buffer[30];
 //
 //
 //
@@ -29,6 +30,7 @@ void setup() {
   pinMode(BUTTON_B_PIN, INPUT);
   pinMode(BUTTON_UP_PIN, INPUT);
   pinMode(BUTTON_DOWN_PIN, INPUT);
+  
   Serial.begin(9600); 
   Serial.println("Hello world!");
 }
@@ -40,12 +42,16 @@ void loop() {
   buttonState_Up = debounceButton(BUTTON_UP_PIN, buttonState_Up);
   buttonState_Down = debounceButton(BUTTON_DOWN_PIN, buttonState_Down);
   Serial.println("");
-  Serial.println("Button A:    "+buttonState_A);
-  Serial.println("Button B:    "+buttonState_B);
-  Serial.println("Button UP:   "+buttonState_Up);
-  Serial.println("Button DOWN: "+buttonState_Down);
-  Serial.println("Hello world!");
-  delay(500);
+  sprintf(debug_buffer, "Button A:       %d",buttonState_A);
+  Serial.println(debug_buffer);
+  sprintf(debug_buffer, "Button B:       %d",buttonState_B);
+  Serial.println(debug_buffer);
+  sprintf(debug_buffer, "Button Up:      %d",buttonState_Up);
+  Serial.println(debug_buffer);
+  sprintf(debug_buffer, "Button Down:    %d",buttonState_Down);
+  Serial.println(debug_buffer);
+  Serial.println("");
+  delay(1500);
 }
 //
 //
