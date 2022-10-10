@@ -1,18 +1,12 @@
 #include "button_events.h"
-#define LOW_LED_PIN 10
-#define MID_LED_PIN 11
-#define HIGH_LED_PIN 12
-
-#define BUTTON_A_PIN 4
-#define BUTTON_B_PIN 5
-#define BUTTON_UP_PIN 6
-#define BUTTON_DOWN_PIN 7
-
+#include "led_events.h"
 
 int buttonState_A = LOW;
 int buttonState_B = LOW;
 int buttonState_Up = LOW;
 int buttonState_Down = LOW;
+
+int ledState = 0;
 
 char debug_buffer[30];
 //
@@ -32,7 +26,9 @@ void setup() {
   pinMode(BUTTON_DOWN_PIN, INPUT);
   
   Serial.begin(9600); 
-  Serial.println("Hello world!");
+
+  set_led_state(0);
+  
 }
 
 // the loop function runs over and over again forever
@@ -41,6 +37,26 @@ void loop() {
   buttonState_B = debounceButton(BUTTON_B_PIN, buttonState_B);
   buttonState_Up = debounceButton(BUTTON_UP_PIN, buttonState_Up);
   buttonState_Down = debounceButton(BUTTON_DOWN_PIN, buttonState_Down);
+  
+  if (buttonState_A == 1){
+    if (ledState == 0){
+      set_led_state(1);
+    }
+  }
+  if (buttonState_B == 1){
+    set_led_state(0);
+  }
+  if (buttonState_Up == 1){
+    if (ledState <= 2 && ledState > 0){
+    increase(ledState);
+    }
+  }
+  if (buttonState_Down == 1){
+    if (ledState >= 2){
+    decrease(ledState);
+    }
+  }
+
   Serial.println("");
   sprintf(debug_buffer, "Button A:       %d",buttonState_A);
   Serial.println(debug_buffer);
@@ -50,8 +66,14 @@ void loop() {
   Serial.println(debug_buffer);
   sprintf(debug_buffer, "Button Down:    %d",buttonState_Down);
   Serial.println(debug_buffer);
+  sprintf(debug_buffer, "LED STATE:      %d",ledState);
+  Serial.println(debug_buffer);
   Serial.println("");
-  delay(1500);
+  delay(15000);
+  
+
+
+
 }
 //
 //
