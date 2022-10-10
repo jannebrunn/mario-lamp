@@ -8,8 +8,11 @@ Suite Setup                 Initialize Pins
 
 *** Test Cases ***
 
-LED Test Startup 
-    Is Pin Low      ${LOW_LED_PIN}
-    Is Pin Low      ${MID_LED_PIN}
-    Is Pin Low      ${HIGH_LED_PIN}
+Led Test Startup
+    ${pin_status}=                  Get Pin Status      ${LOW_LED_PIN}
+    Should Be Equal As Integers     ${pin_status}       0
+    ${pin_status}=                  Get Pin Status      ${MID_LED_PIN}
+    Should Be Equal As Integers     ${pin_status}       0
+    ${pin_status}=                  Get Pin Status      ${HIGH_LED_PIN}
+    Should Be Equal As Integers     ${pin_status}       0
  
