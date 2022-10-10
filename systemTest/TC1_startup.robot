@@ -1,29 +1,15 @@
+*** Comment ***
+Copyright (C) 2022 - Janne Brunn a k a Señor Randomirez Enterprises inc.
 *** Settings ***
 
-Documentation   Test LED behaviour at device startup
-Library                     GPIOLibrary
-Suite Setup                 Begin GPIO Test
-
-*** Variables ***
-
-${LED_PIN}                  17
+Documentation               Test LED behaviour at device startup
+Resource                    resources/helpers.resource
+Suite Setup                 Initialize Pins
 
 *** Test Cases ***
 
-LED Should On
-    Set Input Pin                  ${LED_PIN}
-    Set Pin High                    ${LED_PIN}
-    ${pin_status}=                  Get Pin Status      ${LED_PIN}
-    Should Be Equal As Integers     ${pin_status}       1
-
-LED Should Off
-    Set Output Pin                  ${LED_PIN}
-    Set Pin Low                     ${LED_PIN}
-    ${pin_status}=                  Get Pin Status      ${LED_PIN}
-    Should Be Equal As Integers     ${pin_status}       1
+LED Test Startup 
+    Is Pin Low      ${LOW_LED_PIN}
+    Is Pin Low      ${MID_LED_PIN}
+    Is Pin Low      ${HIGH_LED_PIN}
  
-*** Keywords ***
-
-Begin GPIO Test
-    Set Mode                        BOARD
-    Set Warnings Off
