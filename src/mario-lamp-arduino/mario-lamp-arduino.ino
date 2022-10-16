@@ -1,46 +1,76 @@
-/*
-  Blink
+#include "button_events.h"
+#include "led_events.h"
 
-  Turns an LED on for one second, then off for one second, repeatedly.
+int buttonState_A = LOW;
+int buttonState_B = LOW;
+int buttonState_Up = LOW;
+int buttonState_Down = LOW;
 
-  Most Arduinos have an on-board LED you can control. On the UNO, MEGA and ZERO
-  it is attached to digital pin 13, on MKR1000 on pin 6. LED_BUILTIN is set to
-  the correct LED pin independent of which board is used.
-  If you want to know what pin the on-board LED is connected to on your Arduino
-  model, check the Technical Specs of your board at:
-  https://www.arduino.cc/en/Main/Products
+int ledState = 0;
 
-  modified 8 May 2014
-  by Scott Fitzgerald
-  modified 2 Sep 2016
-  by Arturo Guadalupi
-  modified 8 Sep 2016
-  by Colby Newman
-
-  This example code is in the public domain.
-
-  https://www.arduino.cc/en/Tutorial/BuiltInExamples/Blink
-*/
-
+char debug_buffer[30];
+//
+//
+//
+//
 // the setup function runs once when you press reset or power the board
 void setup() {
   // initialize digital pin LED_BUILTIN as an output.
-  pinMode(LED_BUILTIN, OUTPUT);
-  pinMode(10, OUTPUT);
-  pinMode(11, OUTPUT);
-  pinMode(12, OUTPUT);
+  pinMode(LOW_LED_PIN, OUTPUT);
+  pinMode(LOW_LED_PIN, OUTPUT);
+  pinMode(HIGH_LED_PIN, OUTPUT);
+
+  pinMode(BUTTON_A_PIN, INPUT);
+  pinMode(BUTTON_B_PIN, INPUT);
+  pinMode(BUTTON_UP_PIN, INPUT);
+  pinMode(BUTTON_DOWN_PIN, INPUT);
+  
+  Serial.begin(9600); 
+
+  set_led_state(0);
+  
 }
 
 // the loop function runs over and over again forever
 void loop() {
-  digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
-  digitalWrite(10, HIGH);   // turn the LED on (HIGH is the voltage level)
-  digitalWrite(11, HIGH);   // turn the LED on (HIGH is the voltage level)
-  digitalWrite(12, HIGH);   // turn the LED on (HIGH is the voltage level)
-  delay(1000);                       // wait for a second
-  digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
-  digitalWrite(10, LOW);    // turn the LED off by making the voltage LOW
-  digitalWrite(11, LOW);    // turn the LED off by making the voltage LOW
-  digitalWrite(12, LOW);    // turn the LED off by making the voltage LOW
-  delay(1000);                       // wait for a second
+  buttonState_A = debounceButton(BUTTON_A_PIN, buttonState_A);
+  buttonState_B = debounceButton(BUTTON_B_PIN, buttonState_B);
+  buttonState_Up = debounceButton(BUTTON_UP_PIN, buttonState_Up);
+  buttonState_Down = debounceButton(BUTTON_DOWN_PIN, buttonState_Down);
+  
+  if (buttonState_A == 1){
+    if (ledState == 0){
+      set_led_state(1);
+    }
+  }
+  if (buttonState_B == 1){
+    set_led_state(0);
+  }
+  if (buttonState_Up == 1){
+    if (ledState <= 2 && ledState > 0){
+    increase(ledState);
+    }
+  }
+  if (buttonState_Down == 1){
+    if (ledState >= 2){
+    decrease(ledState);
+    }
+  }
+  delay(1);
+  set_led_state(1);
+  delay(1);
+  set_led_state(2);
+  delay(1);
+  set_led_state(3);
+  delay(1);
+  set_led_state(0);
+  
+
+
+
 }
+//
+//
+//
+//
+//

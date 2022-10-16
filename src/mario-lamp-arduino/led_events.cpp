@@ -25,27 +25,27 @@ void decrease(int fromState){
 
 void set_led_state(int state){
     if (state == 0){
-        digitalWrite(LOW_LED_PIN, LOW);
-        digitalWrite(MID_LED_PIN, LOW);
-        digitalWrite(HIGH_LED_PIN, LOW);
-    }
-    else if (state == 1)
-    {
-        digitalWrite(LOW_LED_PIN, HIGH);
-        digitalWrite(MID_LED_PIN, LOW);
-        digitalWrite(HIGH_LED_PIN, LOW);
-    }
-    else if (state == 2)
-    {
-        digitalWrite(LOW_LED_PIN, HIGH);
-        digitalWrite(MID_LED_PIN, HIGH);
-        digitalWrite(HIGH_LED_PIN, LOW);
-    }
-    else if (state == 3)
-    {
         digitalWrite(LOW_LED_PIN, HIGH);
         digitalWrite(MID_LED_PIN, HIGH);
         digitalWrite(HIGH_LED_PIN, HIGH);
+    }
+    else if (state == 1)
+    {
+        digitalWrite(LOW_LED_PIN, LOW);
+        digitalWrite(MID_LED_PIN, HIGH);
+        digitalWrite(HIGH_LED_PIN, HIGH);
+    }
+    else if (state == 2)
+    {
+        digitalWrite(LOW_LED_PIN, LOW);
+        digitalWrite(MID_LED_PIN, LOW);
+        digitalWrite(HIGH_LED_PIN, HIGH);
+    }
+    else if (state == 3)
+    {
+        digitalWrite(LOW_LED_PIN, LOW);
+        digitalWrite(MID_LED_PIN, LOW);
+        digitalWrite(HIGH_LED_PIN, LOW);
     }
     
     
