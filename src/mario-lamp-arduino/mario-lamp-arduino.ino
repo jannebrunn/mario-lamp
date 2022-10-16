@@ -9,6 +9,7 @@ int buttonState_Down = LOW;
 int ledState = 0;
 
 char debug_buffer[30];
+
 //
 //
 //
@@ -39,19 +40,23 @@ void loop() {
   buttonState_Down = debounceButton(BUTTON_DOWN_PIN, buttonState_Down);
   
   if (buttonState_A == 1){
+    Serial.println("A pressed");
     if (ledState == 0){
       set_led_state(1);
     }
   }
   if (buttonState_B == 1){
+    Serial.println("B pressed");
     set_led_state(0);
   }
   if (buttonState_Up == 1){
-    if (ledState <= 2 && ledState > 0){
+    Serial.println("UP pressed");
+    if (ledState <= 2 && ledState > 0){  
     increase(ledState);
     }
   }
   if (buttonState_Down == 1){
+    Serial.println("DOWN pressed");
     if (ledState >= 2){
     decrease(ledState);
     }
