@@ -56,24 +56,4 @@ void loop() {
     decrease(ledState);
     }
   }
-  delay(1000);
-  sprintf(debug_buffer, "LED State       %d",1);
-  Serial.println(debug_buffer);
-  set_led_state(1);
-  delay(1000);
-  sprintf(debug_buffer, "LED State       %d",2);
-  Serial.println(debug_buffer);
-  set_led_state(2);
-  delay(1000);
-  sprintf(debug_buffer, "LED State       %d",3);
-  Serial.println(debug_buffer);
-  set_led_state(3);
-  delay(1000);
-  sprintf(debug_buffer, "LED State       %d",0);
-  Serial.println(debug_buffer);
-  set_led_state(0);
-  
-
-
-
 }
