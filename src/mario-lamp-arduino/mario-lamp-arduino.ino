@@ -69,7 +69,7 @@ void loop() {
     }
     Serial.println("");
   }
-  delay(5);
+  delay(10);
   
   /*
   Serial.println("####BEGINNING####");
