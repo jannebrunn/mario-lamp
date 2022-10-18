@@ -8,7 +8,7 @@ int buttonState_Down = LOW;
 
 int ledState = 0;
 
-char debug_buffer[30];
+char another_debug_buffer[30];
 
 //
 //
@@ -61,4 +61,43 @@ void loop() {
     decrease(ledState);
     }
   }
+
+  
+  set_led_state(1);
+  Serial.println("");
+  sprintf(another_debug_buffer, "LED State %d requested",1);
+  Serial.println(another_debug_buffer);
+  delay(1);
+  
+  set_led_state(2);
+  Serial.println("");
+  sprintf(another_debug_buffer, "LED State %d requested",2);
+  Serial.println(another_debug_buffer);
+  delay(1);
+  
+  set_led_state(3);
+  Serial.println("");
+  sprintf(another_debug_buffer, "LED State %d requested",3);
+  Serial.println(another_debug_buffer);
+  delay(1);
+  
+  set_led_state(2);
+  Serial.println("");
+  sprintf(another_debug_buffer, "LED State %d requested",2);
+  Serial.println(another_debug_buffer);
+  delay(1);
+
+  set_led_state(1);
+  Serial.println("");
+  sprintf(another_debug_buffer, "LED State %d requested",1);
+  Serial.println(another_debug_buffer);
+  delay(1);
+
+  set_led_state(0);
+  Serial.println("");
+  sprintf(another_debug_buffer, "LED State %d requested",0);
+  Serial.println(another_debug_buffer);
+
 }
+
+
