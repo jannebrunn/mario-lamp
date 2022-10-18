@@ -28,7 +28,7 @@ void setup() {
   
   Serial.begin(9600); 
 
-  set_led_state(0);
+  set_led_state(ledState);
   
 }
 
@@ -43,22 +43,26 @@ void loop() {
     Serial.println("A pressed");
     if (ledState == 0){
       set_led_state(1);
+      ledState = 1;
     }
   }
   if (buttonState_B == 1){
     Serial.println("B pressed");
     set_led_state(0);
+    ledState = 0;
   }
   if (buttonState_Up == 1){
     Serial.println("UP pressed");
     if (ledState <= 2 && ledState > 0){  
     increase(ledState);
+    ledState++;
     }
   }
   if (buttonState_Down == 1){
     Serial.println("DOWN pressed");
     if (ledState >= 2){
     decrease(ledState);
+    ledState--;
     }
   }
 
@@ -68,34 +72,43 @@ void loop() {
   sprintf(another_debug_buffer, "LED State %d requested",1);
   Serial.println(another_debug_buffer);
   set_led_state(1);
+  ledState = 1;
   delay(1000);
   
   
   Serial.println("");
   sprintf(another_debug_buffer, "LED State %d requested",2);
   Serial.println(another_debug_buffer);
-  set_led_state(2);
+  //set_led_state(2);
+  increase(ledState);
+  ledState++;
   delay(1000);
   
   
   Serial.println("");
   sprintf(another_debug_buffer, "LED State %d requested",3);
   Serial.println(another_debug_buffer);
-  set_led_state(3);
+  //set_led_state(3);
+  increase(ledState);
+  ledState++;
   delay(1000);
   
   
   Serial.println("");
   sprintf(another_debug_buffer, "LED State %d requested",2);
   Serial.println(another_debug_buffer);
-  set_led_state(2);
+  //set_led_state(2);
+  decrease(ledState);
+  ledState--;
   delay(1000);
 
   
   Serial.println("");
   sprintf(another_debug_buffer, "LED State %d requested",1);
   Serial.println(another_debug_buffer);
-  set_led_state(1);
+  //set_led_state(1);
+  decrease(ledState);
+  ledState--;
   delay(1000);
 
   
@@ -103,6 +116,7 @@ void loop() {
   sprintf(another_debug_buffer, "LED State %d requested",0);
   Serial.println(another_debug_buffer);
   set_led_state(0);
+  ledState = 0;
   delay(1000);
   Serial.println("#########END#######");
   Serial.println("");
