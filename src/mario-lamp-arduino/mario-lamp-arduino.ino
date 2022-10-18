@@ -52,22 +52,26 @@ void loop() {
     ledState = 0;
   }
   if (buttonState_Up == 1){
-    Serial.println("UP pressed");
+    Serial.print("UP pressed");
     if (ledState <= 2 && ledState > 0){  
-    increase(ledState);
-    ledState++;
+    //increase(ledState);
+    //ledState++;
+      Serial.print(" Inside IF statement!");
     }
+    Serial.println("");
   }
   if (buttonState_Down == 1){
-    Serial.println("DOWN pressed");
+    Serial.print("DOWN pressed!");
     if (ledState >= 2){
-    decrease(ledState);
-    ledState--;
+    //decrease(ledState);
+    //ledState--;
+      Serial.print(" Inside IF statement!");
     }
+    Serial.println("");
   }
 
   
-  
+  /*
   Serial.println("####BEGINNING####");
   sprintf(another_debug_buffer, "LED State %d requested",1);
   Serial.println(another_debug_buffer);
@@ -120,5 +124,5 @@ void loop() {
   delay(1000);
   Serial.println("#########END#######");
   Serial.println("");
-
+*/
 }
