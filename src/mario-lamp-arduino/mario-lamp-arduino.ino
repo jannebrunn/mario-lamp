@@ -55,7 +55,7 @@ void loop() {
     Serial.print("UP pressed");
     if (ledState <= 2 && ledState > 0){  
     //increase(ledState);
-    //ledState++;
+    ledState++;
       Serial.print(" Inside IF statement!");
     }
     Serial.println("");
@@ -64,7 +64,7 @@ void loop() {
     Serial.print("DOWN pressed!");
     if (ledState >= 2){
     //decrease(ledState);
-    //ledState--;
+    ledState--;
       Serial.print(" Inside IF statement!");
     }
     Serial.println("");
