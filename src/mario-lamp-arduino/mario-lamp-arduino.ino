@@ -64,7 +64,7 @@ void loop() {
 
   
   set_led_state(1);
-  Serial.println("");
+  Serial.println("####BEGINNING####");
   sprintf(another_debug_buffer, "LED State %d requested",1);
   Serial.println(another_debug_buffer);
   delay(1000);
@@ -98,5 +98,7 @@ void loop() {
   sprintf(another_debug_buffer, "LED State %d requested",0);
   Serial.println(another_debug_buffer);
   delay(1000);
+  Serial.println("#########END#######");
+  Serial.println("");
 
 }
