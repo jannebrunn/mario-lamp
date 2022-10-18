@@ -54,18 +54,18 @@ void loop() {
   if (buttonState_Up == 1){
     Serial.print("UP pressed");
     if (ledState <= 2 && ledState > 0){  
-    //increase(ledState);
+    increase(ledState);
     ledState++;
-      Serial.print(" Inside IF statement!");
+    Serial.print(" Inside IF statement!");
     }
     Serial.println("");
   }
   if (buttonState_Down == 1){
     Serial.print("DOWN pressed!");
     if (ledState >= 2){
-    //decrease(ledState);
+    decrease(ledState);
     ledState--;
-      Serial.print(" Inside IF statement!");
+    Serial.print(" Inside IF statement!");
     }
     Serial.println("");
   }
